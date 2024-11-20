@@ -1,0 +1,77 @@
+.user-settings {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  header h2 {
+    font-size: 24px;
+  }
+  
+  .welcome-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logout-button {
+    background: #4caf50;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background: #3e8c41;
+  }
+  
+  .settings-form label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .settings-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .budget-table th,
+  .budget-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .add-category-button {
+    background: #4caf50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-category-button:hover {
+    background: #3e8c41;
+  }
+  
