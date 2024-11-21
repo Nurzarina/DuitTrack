@@ -1,0 +1,21 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url('../assets/bgImg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-form {
+    padding: 3rem;
+    padding-bottom: 3rem;
+    background: rgba(10, 25, 47, 0.9);
+    color: white;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+    width: 100%;
+}

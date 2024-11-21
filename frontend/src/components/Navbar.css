@@ -1,0 +1,39 @@
+.sidebar {
+    max-width: 150px;
+    height: 100vh;
+    background-color: #1e1e2f;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #4caf50;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nav-item:hover {
+    color: #4caf50;
+}
+
+.nav-item svg {
+    margin-right: 10px;
+}

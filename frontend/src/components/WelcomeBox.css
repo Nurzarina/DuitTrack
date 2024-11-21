@@ -1,0 +1,6 @@
+.welcome-box {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    z-index: 10;
+  }
