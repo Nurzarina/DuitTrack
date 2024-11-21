@@ -25,7 +25,7 @@ const Register = () => {
   return (
     <Container fluid className="register-container">
       <form
-        className="register-form">
+        className="register-form" onSubmit={handleRegister}>
         <h2 className="text-center mb-4" style={{fontSize:"40px"}}>Register</h2>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">

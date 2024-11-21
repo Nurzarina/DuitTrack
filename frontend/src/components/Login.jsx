@@ -16,7 +16,9 @@ const Login = () => {
                 password
             });
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('username', response.data.username);
             alert('Login Successful!');
+            window.location.href = "/statistic";
         } catch (error) {
             alert('Login Failed: ' + error.response.data);
         }
@@ -31,7 +33,7 @@ const Login = () => {
                     onChange={(e) => setUsername(e.target.value)} />
                 <input type="password" className="form-control mb-3" placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)} />
-                <button className="btn btn-success w-100 mt-3" type="submit">Log In</button>
+                <button className="btn btn-success w-100 mt-4" type="submit">Log In</button>
                 <p className="text-center mt-3">
                     Don't have an account yet? <a href="/register">Register here</a>
                 </p>

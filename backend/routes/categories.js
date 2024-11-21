@@ -17,18 +17,18 @@ router.get("/:user_id", (req, res) => {
 
 // Add a new category for a user
 router.post("/", (req, res) => {
-  const { user_id, name, limit } = req.body;
-  if (!user_id || !name || !limit) {
-    return res.status(400).send("User ID, name, and limit are required.");
+  const { user_id, name, spending_limit } = req.body;
+  if (!user_id || !name || !spending_limit) {
+    return res.status(400).send("User ID, name, and spending_limit are required.");
   }
 
-  const sql = "INSERT INTO categories (user_id, name, limit) VALUES (?, ?, ?)";
-  db.query(sql, [user_id, name, limit], (err, result) => {
+  const sql = "INSERT INTO categories (user_id, name, spending_limit) VALUES (?, ?, ?)";
+  db.query(sql, [user_id, name, spending_limit], (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Failed to add category.");
     }
-    res.json({ id: result.insertId, user_id, name, limit });
+    res.json({ id: result.insertId, user_id, name, spending_limit });
   });
 });
 

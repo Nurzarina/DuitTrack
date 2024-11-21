@@ -2,44 +2,36 @@
   background-image: url('../assets/bgImg.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 100%;
-  min-width: 100%;
+  background-attachment: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
-.user-settings-container {
-  padding: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  /* min-height: 100vh;
-  min-width: 100vw; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #4caf50;
-  border-radius: 5px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-header h2 {
-  font-size: 24px;
-}
-
-.logout-button {
-  background: #4caf50;
-  border: none;
+#user-settings-title h2 {
   color: white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+  font-size: 4rem;
+  text-align: center;
+  padding: 1%;
+  margin-left: 16vw;
+  margin-bottom: 4vh;
+  margin-top: 4vh;
+  background-color: #0a192f;
+  width: 500px;
+  border: 1px solid black;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1
 }
 
-.logout-button:hover {
-  background: #3e8c41;
+#user-settings-container {
+  margin-left: 5%;
+  margin-bottom: 10vh;
+  position: relative;
+  z-index: 1;
+  width: 100vw
 }
 
 .settings-form label {
@@ -56,10 +48,30 @@ header h2 {
   border-radius: 5px;
 }
 
+.category-wrapper {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  margin-right: 12vw;
+  margin-left: 8vw;
+  border: 1px solid black;
+  height: 60vh;
+  width: 77vw;
+  position: relative;
+  z-index: 1
+}
+
+.category-wrapper h4 {
+  margin-left: 70px;
+  font-size: 25px;
+}
+
 .budget-table {
-  width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 
 .budget-table th,
@@ -69,15 +81,26 @@ header h2 {
   text-align: left;
 }
 
-.add-category-button {
-  background: #4caf50;
+.category-form {
+  margin: 20px;
+  margin-right: 70px;
+  padding: 20px;
+  border: 1px dashed black;
+  border-radius: 20px;
+}
+
+#add-category-button {
+  background: #0a192f;
   color: white;
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-.add-category-button:hover {
-  background: #3e8c41;
+#add-category-button:hover {
+  color: black;
+  font-weight: bold;
+  background: #2ed573;
 }

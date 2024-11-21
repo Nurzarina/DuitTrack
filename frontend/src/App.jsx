@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Expenses from './components/Expenses';
 import Statistic from './components/Statistic';
 import WelcomeBox from './components/WelcomeBox';
+import Footer from './components/Footer';
 import "./App.css";
 
 
@@ -38,6 +39,7 @@ const AppContent = () => {
           <Route path="/usersetting" element={<UserSettings/>}/>
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

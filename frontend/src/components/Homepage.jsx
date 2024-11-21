@@ -7,8 +7,8 @@ const Homepage = () => {
   return (
     <Container fluid className="homepage-container">
       <div className="homepage-content">
-        <h1 className="text-center mb-4" style={{ fontSize: "3rem" }}>Welcome to DuitTrack</h1>
-        <p className="text-center mb-4">
+        <h1 className="text-center mb-5" style={{ fontSize: "3rem" }}>Welcome to <b style={{ color:"#2ed573", fontSize:"4rem" }}>DuitTrack</b></h1>
+        <p className="text-center mb-5" style={{ fontSize:"1.5em" }}>
           Simplify your spending, track your finances, and take control with DuitTrack.
         </p>
         <br></br>
