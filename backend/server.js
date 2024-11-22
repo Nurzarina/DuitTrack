@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const categoriesRoutes = require('./routes/categoriesRoutes');
 const expensesRoutes = require('./routes/expensesRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 require('dotenv').config();
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 app.use('api/categories', categoriesRoutes);
 app.use('/api/expenses', expensesRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 const PORT = 5000;
 

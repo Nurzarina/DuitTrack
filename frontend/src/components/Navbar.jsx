@@ -11,8 +11,8 @@ const Navibar = () => {
             </span>
 
             <Nav className='nav'>
-            <Nav.Link as={Link} to="/statistic" className="nav-item">
-                    <FaChartBar /> Statistic
+            <Nav.Link as={Link} to="/dashboard" className="nav-item">
+                    <FaChartBar /> Dashboard
                 </Nav.Link>
                 <Nav.Link as={Link} to="/expenses" className='nav-item'>
                     <FaCoins /> Expenses

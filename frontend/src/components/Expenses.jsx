@@ -8,8 +8,8 @@ const Expenses = () => {
   const [expenses, setExpenses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
-    user_id:"",
-    category_id:"",
+    user_id: "",
+    category_id: "",
     date: "",
     amount: "",
     notes: "",
@@ -40,7 +40,7 @@ const Expenses = () => {
     setForm({ ...form, [name]: value });
   };
 
-// Handle submit
+  // Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -51,10 +51,10 @@ const Expenses = () => {
       alert("Expense added successfully!");
       fetchExpenses();
       setForm({
-        category_id:"",
-        date:"",
-        amount:"",
-        notes:"",
+        category_id: "",
+        date: "",
+        amount: "",
+        notes: "",
       });
     } catch (error) {
       console.error(error);
@@ -81,55 +81,72 @@ const Expenses = () => {
       </div>
 
       <div className="expenses-wrapper">
-      <Container id="expenses-container">
+        <Container id="expenses-container">
 
           <Row className="expense-form-row">
-          <Form className="expense-form">
-          <select>
-            <option value="">Select Category</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-          <input name="date" type="date" value={form.date} onChange={handleInputChange} />
-          <input name="amount" type="number" placeholder="Amount (RM)" value={form.amount} onChange={handleInputChange} />
-          <textarea name="notes" placeholder="Notes" value={form.notes} onChange={handleInputChange} />
-          <Button id="add-expense-button" onClick={addExpense}>+ Add New Expense</Button>
-          </Form>
+          <h4>Add New Expense</h4>
+            <Form className="expense-form">
+              <div className="form-group">
+                <label htmlFor="category">Category:</label>
+                <select id="category">
+                  <option value="">Select Category</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="date">Date:</label>
+                <input id="date" name="date" type="date" value={form.date} onChange={handleInputChange} />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="amount">Amount (RM):</label>
+                <input id="amount" name="amount" type="number" placeholder="Amount (RM)" value={form.amount} onChange={handleInputChange} />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="notes">Notes:</label>
+                <textarea id="notes" name="notes" placeholder="Notes" value={form.notes} onChange={handleInputChange} />
+              </div>
+
+              <Button id="add-expense-button" onClick={addExpense}>+ Add New Expense</Button>
+            </Form>
           </Row>
 
           <Row className="expense-table-row">
             <h4>All Expenses</h4>
-        <Table className="expense-table-list">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Category</th>
-              <th>Amount</th>
-              <th>Notes</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {expenses.map((expense) => (
-              <tr key={expense.id}>
-                <td>{expense.date}</td>
-                <td>{expense.category}</td>
-                <td>{expense.amount}</td>
-                <td>{expense.notes}</td>
-                <td>
-                  <Button id="edit-expense-button">Edit</Button>
-                  <Button id="delete-expense-button" onClick={() => deleteExpense(expense.id)}>Delete</Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-        </Row>
+            <Table className="expense-table-list">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Notes</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {expenses.map((expense) => (
+                  <tr key={expense.id}>
+                    <td>{expense.date}</td>
+                    <td>{expense.category}</td>
+                    <td>{expense.amount}</td>
+                    <td>{expense.notes}</td>
+                    <td>
+                      <Button id="edit-expense-button">Edit</Button>
+                      <Button id="delete-expense-button" onClick={() => deleteExpense(expense.id)}>Delete</Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Row>
 
-      </Container>
+        </Container>
       </div>
     </div>
   );
