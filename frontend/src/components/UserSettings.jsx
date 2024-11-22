@@ -6,8 +6,10 @@ import axios from "axios";
 
 const UserSettings = () => {
     const [categories, setCategories] = useState([]);
-    const [userId, setUserId] = useState(1); // Simulated user ID
+    // const [userId, setUserId] = useState("");
     const [newCategory, setNewCategory] = useState({ name: "", limit: "" });
+
+    let userId = localStorage.getItem("user_id");
 
     // Fetch categories for the logged-in user
     useEffect(() => {
@@ -43,6 +45,9 @@ const UserSettings = () => {
         }
     };
 
+    // Update a category for the logged-in user.
+    
+
     // Delete a category for the logged-in user
     const deleteCategory = async (categoryId) => {
         try {
@@ -65,7 +70,7 @@ const UserSettings = () => {
             <Container id="user-settings-container">
                 <div className="category-wrapper">
                     <h4>Budget Categories & Limits:</h4>
-                    <Table striped bordered hover className="budget-table">
+                    <Table striped bordered hover className="categories-table">
                         <thead>
                             <tr>
                                 <th>Category Name</th>

@@ -1,3 +1,8 @@
+// Routes available in this file:
+// 1. Get categories by user_id
+// 2. Add a new category for a user
+// 3. Delete a category
+
 const express = require("express");
 const db = require("../config/db");
 const router = express.Router();
@@ -32,7 +37,7 @@ router.post("/", (req, res) => {
   });
 });
 
-// Delete a category
+// Delete a category 
 router.delete("/:id", (req, res) => {
     const { id } = req.params;
     const sql = "DELETE FROM categories WHERE id = ?";
