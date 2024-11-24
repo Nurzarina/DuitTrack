@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Fetch dashboard data
 app.get("/", (req, res) => {
-    const userId = 1;   // Later need to modify this so userID is received from frontend.
+    const userId = 2;   // Later need to modify this so userID is received from frontend.
 
     const query = `
         SELECT SUM(amount) AS totalExpenses

@@ -16,6 +16,8 @@ function Statistic() {
     const fetchDashboardData = async () => {
       try {
 
+        let userId = localStorage.getItem("user_id");
+        
         // Fetch data from backend
         const response = await axios.get("http://localhost:5000/dashboard");
         const { totalExpenses, monthlyBudget, categoryData } = response.data;

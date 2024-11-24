@@ -41,7 +41,14 @@ router.post('/login', (req, res) => {
 
     const sql = "SELECT * FROM users where username = ?";
     db.query(sql, [username], async (err, result) => {
-        if (err || result.length === 0) return res.status(400).send('Invalid credentials.')
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send("Server error.");
+        };
+
+        if (result.length === 0) {
+            return res.status(400).send('Invalid credentials.');
+        };
 
         const user = result[0];
         const validPassword = await bcrypt.compare(password, user.password);
@@ -50,7 +57,11 @@ router.post('/login', (req, res) => {
 
         const token = jwt.sign({ id: user.id }, SECRET, { expiresIn: '1h' });
 
-        res.json({ token, username: user.username });
+        res.json({ 
+            token, 
+            username: user.username,
+            user_id: user.id 
+        });
     });
 });
 

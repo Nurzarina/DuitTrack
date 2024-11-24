@@ -27,11 +27,20 @@
 }
 
 #user-settings-container {
-  margin-left: 5%;
-  margin-bottom: 10vh;
-  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  margin-right: 12vw;
+  margin-left:  14vw;
+  border: 1px solid black;
+  height: 60vh;
+  width: 77vw;
+  position: absolute;
   z-index: 1;
-  width: 100vw
+  overflow: hidden;
 }
 
 .settings-form label {
@@ -49,25 +58,20 @@
 }
 
 .category-wrapper {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 30px;
-  margin-right: 12vw;
-  margin-left: 8vw;
-  border: 1px solid black;
-  height: 60vh;
-  width: 77vw;
-  position: absolute;
-  z-index: 1
+  margin: 0;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .category-wrapper h4 {
-  margin-left: 4vw;
-  margin-top: 12vw;
-  font-size: 25px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .categories-table {
@@ -85,12 +89,50 @@
   text-align: left;
 }
 
-.category-form {
-  margin: 20px;
-  margin-right: 70px;
-  padding: 20px;
-  border: 1px dashed black;
-  border-radius: 20px;
+.add-category-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 200px;
+  gap: 0.5rem;
+}
+
+.custom-form-group label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.custom-form-group input,
+.custom-form-group textarea,
+.custom-form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.custom-form-group input:focus,
+.custom-form-group textarea:focus,
+.custom-form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); 
 }
 
 #add-category-button {
@@ -107,4 +149,15 @@
   color: black;
   font-weight: bold;
   background: #2ed573;
+}
+
+.action-buttons-wrapper {
+  display: flex;
+  justify-content: left;
+}
+
+.action-buttons {
+  margin-left: 8px;
+  width: 4.5rem;
+  height: 2rem;
 }

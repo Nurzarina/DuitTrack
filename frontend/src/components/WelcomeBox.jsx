@@ -10,6 +10,7 @@ function WelcomeBox() {
     let username = localStorage.getItem('username') || "Guest";
 
     console.log("Username in localStorage:", localStorage.getItem('username'));      // For debugging purpose
+    console.log("User_id in localStorage:", localStorage.getItem('user_id'));      // For debugging purpose
 
     const handleLogout = () => {
         localStorage.removeItem("token"); // Clear the JWT token

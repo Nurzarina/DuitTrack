@@ -39,16 +39,45 @@ router.post("/", (req, res) => {
 
 // Delete a category 
 router.delete("/:id", (req, res) => {
-    const { id } = req.params;
-    const sql = "DELETE FROM categories WHERE id = ?";
-    db.query(sql, [id], (err, result) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send("Failed to delete category.");
-      }
-      res.sendStatus(204);
-    });
+  const { id } = req.params;
+  const sql = "DELETE FROM categories WHERE id = ?";
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to delete category.");
+    }
+    res.sendStatus(204);
   });
-  
+});
+
+// Update a category
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name, spending_limit } = req.body;
+
+ const updateQuery = `
+ UPDATE categories
+ SET name = ?, spending_limit = ?
+ WHERE id = ?
+ `;
+
+ try {
+  db.query(updateQuery, [ name, spending_limit, id ], (error, results) => {
+      if (error) {
+        console.error('Error updating category:', error);
+        return res.status(500).json({ error: 'Failed to update category'});
+      }
+
+      if (results.affectedRows > 0) {
+        res.json({ id, name, spending_limit});
+      } else {
+        res.status(404).json({ error: 'Category not found'});
+      }
+    });
+ }  catch (error) {
+  console.error('Error:', error);
+  res.status(500).json({ error: 'Failed to update category' });
+ }
+});
 
 module.exports = router;
