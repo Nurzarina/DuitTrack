@@ -154,15 +154,66 @@
   overflow-y: auto;
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .expense-table-list th,
 .expense-table-list td {
-  border: 1px soild #ddd;
+  border: 1px solid #ddd;
   padding: 0.5rem;
+  word-wrap: break-word;
   text-align: center;
 }
 
 .expense-table-list th {
   background-color: #d0edff;
+}
+
+.expense-table-list th:nth-child(4),
+.expense-table-list td:nth-child(4) {
+  width: 40%;
+  word-wrap: hidden;
+}
+
+.expense-table-list th:nth-child(5),
+.expense-table-list td:nth-child(5) {
+  width: 20%;
+}
+
+.action-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.action-buttons {
+  margin-right: 8px;
+  margin-bottom: 4px;
+  width: 5.5rem;
+}
+
+@media (min-width: 768px) {
+
+  .action-buttons-wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .action-buttons {
+    margin-right: 8px;
+    width: 4.5rem;
+  }
+
+}
+
+@media (min-width: 473px) and (max-width: 768px) {
+
+  .action-buttons-wrapper {
+    flex-direction: column;
+  }
+
+  .action-buttons {
+    margin-bottom: 4px;
+    width: 4.5rem;
+  }
+
 }

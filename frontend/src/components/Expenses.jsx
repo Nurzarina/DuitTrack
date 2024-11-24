@@ -1,6 +1,7 @@
 import "./Expenses.css";
 import { useState, useEffect } from "react";
 import { Button, Container, Table, Form, Row, Col, FormLabel } from "react-bootstrap";
+import { IoMdAdd, IoMdCreate, IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { useFetcher } from "react-router-dom";
 
@@ -8,27 +9,30 @@ const Expenses = () => {
   const [expenses, setExpenses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
-    user_id: "",
     category_id: "",
     date: "",
     amount: "",
     notes: "",
   });
 
-  const user_id = localStorage.getItem("user_id"); // Get user_id from localStorage
-
   useEffect(() => {
     fetchExpenses();
     fetchCategories();
   }, []);
 
+  // Get user_id from localStorage
+  const user_id = localStorage.getItem("user_id"); 
+
+  console.log("user_id from expense page:", user_id);       // For debugging purpose
+
+
   // Fetch expenses data from backend
   const fetchExpenses = async () => {
-    const { data } = await axios.get("http://localhost:5000/expenses");
+    const { data } = await axios.get(`http://localhost:5000/api/expenses/${user_id}`);
     setExpenses(data);
   };
 
-  // Fetch categroies information from backend
+  // Fetch categories information from backend
   const fetchCategories = async () => {
     const { data } = await axios.get(`http://localhost:5000/api/categories/${user_id}`);
     setCategories(data);
@@ -40,37 +44,32 @@ const Expenses = () => {
     setForm({ ...form, [name]: value });
   };
 
-  // Handle submit
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const expenseData = { ...form, user_id }; // Attach user_id to form data
 
+    console.log("expenseData from after user submit new expense:", expenseData);       // For debugging purpose
+
     try {
-      await axios.post("http://localhost:5000/expenses", expenseData);
+      await axios.post("http://localhost:5000/api/expenses", expenseData);
       alert("Expense added successfully!");
       fetchExpenses();
       setForm({
-        category_id: "",
         date: "",
         amount: "",
         notes: "",
       });
     } catch (error) {
-      console.error(error);
+      console.error("Error adding expense", error);
       alert("Error adding expense");
     }
   }
 
-  // Function to add expense from user
-  const addExpense = async () => {
-    await axios.post("http://localhost:5000/expenses", form);
-    fetchExpenses();
-    setForm({ date: "", category: "", amount: "", notes: "" });
-  };
-
-  const deleteExpense = async (id) => {
-    await axios.delete(`http://localhost:5000/expenses/${id}`);
+  // Function to delete expense
+  const deleteExpense = async (expense_id) => {
+    await axios.delete(`http://localhost:5000/api/expenses/${expense_id}`);
     fetchExpenses();
   };
 
@@ -85,10 +84,10 @@ const Expenses = () => {
 
           <Row className="expense-form-row">
           <h4>Add New Expense</h4>
-            <Form className="expense-form">
+            <Form className="expense-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="category">Category:</label>
-                <select id="category">
+                <select id="category" name="category_id" onChange={handleInputChange}>
                   <option value="">Select Category</option>
                   {categories.map((category) => (
                     <option key={category.id} value={category.id}>
@@ -113,7 +112,7 @@ const Expenses = () => {
                 <textarea id="notes" name="notes" placeholder="Notes" value={form.notes} onChange={handleInputChange} />
               </div>
 
-              <Button id="add-expense-button" onClick={addExpense}>+ Add New Expense</Button>
+              <Button id="add-expense-button" type="submit">+ Add New Expense</Button>
             </Form>
           </Row>
 
@@ -132,13 +131,15 @@ const Expenses = () => {
               <tbody>
                 {expenses.map((expense) => (
                   <tr key={expense.id}>
-                    <td>{expense.date}</td>
-                    <td>{expense.category}</td>
+                    <td>{new Intl.DateTimeFormat('en-MY', {dateStyle: 'medium', timeZone: 'Asia/Kuala_Lumpur'}).format(new Date(expense.date))}</td>
+                    <td>{expense.category_name}</td>
                     <td>{expense.amount}</td>
                     <td>{expense.notes}</td>
                     <td>
-                      <Button id="edit-expense-button">Edit</Button>
-                      <Button id="delete-expense-button" onClick={() => deleteExpense(expense.id)}>Delete</Button>
+                      <div className="action-buttons-wrapper">
+                      <Button id="edit-expense-button" className="action-buttons" variant="warning" size="sm"><IoMdCreate />Edit</Button>
+                      <Button id="delete-expense-button" className="action-buttons" variant="danger" size="sm" onClick={() => deleteExpense(expense.id)}><IoMdTrash />Delete</Button>
+                      </div>
                     </td>
                   </tr>
                 ))}
