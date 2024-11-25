@@ -1,12 +1,12 @@
 // This component have the following functions:
 // 1. Fetch categories for the logged-in user
 // 2. Add a new category for the logged-in user
-// Start editing a category
-// Cancel editing
-//  Update a category for the logged-in user
-// Handle delete confirmation
-//  Delete a category for the logged-in user
-// Cancel delete
+// 3. Start editing a category
+// 4. Cancel editing
+// 5. Update a category for the logged-in user
+// 6. Handle delete confirmation
+// 7. Delete a category for the logged-in user
+// 8. Cancel delete
 
 
 import { useState, useEffect } from "react";
@@ -29,7 +29,8 @@ const UserSettings = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [categoryToDelete, setCategoryToDelete] = useState(null);
 
-    let userId = localStorage.getItem("user_id");
+    // Get user_id from localStorage
+    const userId = localStorage.getItem("user_id");
 
     // Fetch categories for the logged-in user
     useEffect(() => {
@@ -269,8 +270,8 @@ const UserSettings = () => {
                         <Modal.Title> <b>Delete Confirmation</b></Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        Are you sure you want to delete this category? 
-                        <p><b style={{color:"red"}}>* This action cannot be undone.</b></p>
+                        Are you sure you want to delete this category?
+                        <p><b style={{ color: "red" }}>* This action cannot be undone.</b></p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => cancelDelete()}>

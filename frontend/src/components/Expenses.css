@@ -46,6 +46,7 @@
   border-radius: 30px;
   margin-right: 12vw;
   margin-left: 14vw;
+  padding: 1rem;
   border: 1px solid black;
   height: 60vh;
   width: 77vw;
@@ -150,11 +151,11 @@
 }
 
 .expense-table-list {
-  flex-grow: 1;
-  overflow-y: auto;
-  width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
-  table-layout: fixed;
+  position: relative;
+  margin-top: 4vh;
+  box-shadow: 0 4px 10px rgba(41, 55, 84, 0.1);
 }
 
 .expense-table-list th,
@@ -169,6 +170,11 @@
   background-color: #d0edff;
 }
 
+.expense-table-list th:nth-child(1),
+.expense-table-list td:nth-child(1) {
+  width: 10%;
+}
+
 .expense-table-list th:nth-child(4),
 .expense-table-list td:nth-child(4) {
   width: 40%;
@@ -177,7 +183,7 @@
 
 .expense-table-list th:nth-child(5),
 .expense-table-list td:nth-child(5) {
-  width: 20%;
+  width: 30%;
 }
 
 .action-buttons-wrapper {
@@ -186,11 +192,11 @@
 }
 
 .action-buttons {
-  margin-right: 8px;
-  margin-bottom: 4px;
-  width: 5.5rem;
+  margin-left: 8px;
+  width: 4.5rem;
+  height: 2rem;
 }
-
+/* 
 @media (min-width: 768px) {
 
   .action-buttons-wrapper {
@@ -216,4 +222,4 @@
     width: 4.5rem;
   }
 
-}
+} */

@@ -1,3 +1,13 @@
+// This component have the following functions:
+// Fetch logged-in user's expenses data from backend
+// Fetch logged-in user's budget categories information from backend
+// Handle user input
+// Handle form submission to add new expense
+// Handle delete confirmation
+// Delete expense an expense for the logged-in user
+// Cancel delete
+
+
 import "./Expenses.css";
 import { useState, useEffect } from "react";
 import { Button, Container, Table, Form, Row, Col, FormLabel } from "react-bootstrap";
@@ -14,25 +24,33 @@ const Expenses = () => {
     amount: "",
     notes: "",
   });
+  const [editingExpense, setEditingExpense] = useState(null);
+  const [updatedExpense, setUpdatedExpense] = useState({
+    category_id: "",
+    date: "",
+    amount: "",
+    notes: "",
+  });
+  const [showDeleteExpenseModal, setShowDeleteExpenseModal] = useState(false);
+  const [expenseToDelete, setExpenseToDelete] = useState(null);
+
+    // Get user_id from localStorage
+    const user_id = localStorage.getItem("user_id"); 
 
   useEffect(() => {
     fetchExpenses();
     fetchCategories();
   }, []);
 
-  // Get user_id from localStorage
-  const user_id = localStorage.getItem("user_id"); 
-
   console.log("user_id from expense page:", user_id);       // For debugging purpose
 
-
-  // Fetch expenses data from backend
+  // Fetch logged-in user's expenses data from backend
   const fetchExpenses = async () => {
     const { data } = await axios.get(`http://localhost:5000/api/expenses/${user_id}`);
     setExpenses(data);
   };
 
-  // Fetch categories information from backend
+  // Fetch logged-in user's budget categories information from backend
   const fetchCategories = async () => {
     const { data } = await axios.get(`http://localhost:5000/api/categories/${user_id}`);
     setCategories(data);
@@ -44,7 +62,7 @@ const Expenses = () => {
     setForm({ ...form, [name]: value });
   };
 
-  // Handle form submission
+  // Handle form submission to add new expense
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,7 +85,10 @@ const Expenses = () => {
     }
   }
 
-  // Function to delete expense
+  // Handle delete confirmation
+
+
+  // Delete expense an expense for the logged-in user
   const deleteExpense = async (expense_id) => {
     await axios.delete(`http://localhost:5000/api/expenses/${expense_id}`);
     fetchExpenses();
@@ -112,7 +133,7 @@ const Expenses = () => {
                 <textarea id="notes" name="notes" placeholder="Notes" value={form.notes} onChange={handleInputChange} />
               </div>
 
-              <Button id="add-expense-button" type="submit">+ Add New Expense</Button>
+              <Button id="add-expense-button" type="submit"><IoMdAdd /> Add New Expense</Button>
             </Form>
           </Row>
 
@@ -138,7 +159,7 @@ const Expenses = () => {
                     <td>
                       <div className="action-buttons-wrapper">
                       <Button id="edit-expense-button" className="action-buttons" variant="warning" size="sm"><IoMdCreate />Edit</Button>
-                      <Button id="delete-expense-button" className="action-buttons" variant="danger" size="sm" onClick={() => deleteExpense(expense.id)}><IoMdTrash />Delete</Button>
+                      <Button id="delete-expense-button" className="action-buttons" variant="danger" size="sm" onClick={() => confirmDeleteExpense(expense.id)}><IoMdTrash />Delete</Button>
                       </div>
                     </td>
                   </tr>
