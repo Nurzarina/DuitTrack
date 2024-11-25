@@ -146,6 +146,10 @@ DuitTrack/
 ```
 
 ## Acknowledgments
- - **React Bootstrap** for the frontend design.
- - **MySQL** for the database.
- - **Express.js** for the backend framework.
+ - **React Bootstrap**: Used for frontend design components.
+ - **MySQL**: Used for database management.
+ - **Express.js**: Backend framework for handling server-side logic.
+ - **Image Credit:**  
+  The background image is provided by [Freepik](https://www.freepik.com/free-photo/closeup-shot-malaysian-riggit-bills_27738018.htm).
+
+© 2024 DuitTrack. All rights reserved for the website's code and design. The background image is © Freepik and is used with attribution under their licensing terms.
