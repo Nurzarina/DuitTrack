@@ -10,5 +10,5 @@
 ### Tech Stack:
 - **Frontend**: React.js
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB
+- **Database**: MySQL
 - **Others**: Chart.js, Cloudinary for image uploads
