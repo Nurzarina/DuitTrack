@@ -1,11 +1,13 @@
 # DuitTrack (This project is still a work in progress)
 ## DuitTrack is a budget tracking app designed to help Malaysians manage their finances effectively. With an intuitive interface and locally-inspired features, DuitTrack simplifies expense tracking, visualizes spending habits, and encourages better financial planning.
 
+
 ### Current Available Features
- - Add, display, edit, and delete budget categories.
  - Add and delete expenses.
- - Organize expenses by categories with spending limits.
+ - Organize expenses by categories.
+ - Add, display, edit, and delete budget categories.
  - Backend API for managing user and budget categories data.
+
 
 ### Tech Stack:
 - **Frontend**: React.js
@@ -13,8 +15,11 @@
 - **Database**: MySQL
 - **Others**: Chart.js
 
+
+
 ## Getting Started
 Follow these instructions to set up the project locally.
+
 
 ### Prerequisites
 Ensure you have the following installed:
@@ -23,6 +28,7 @@ Ensure you have the following installed:
  - MySQL
  - Git
 
+
 #### 1. Clone the repository
 
 ```bash
@@ -30,11 +36,12 @@ git clone [https://github.com/Nurzarina/Disaster_Response_App.git](https://githu
 cd DuitTrack
 ```
 
+
 #### 2. Backend Setup
 
 ##### Step 1: Navigate to the Backend Directory
 ```bash
-cd backend
+cd ../backend
 ```
 
 ##### Step 2: Install Dependencies
@@ -90,3 +97,55 @@ FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE );
 nodemon server.js
 ```
 Your backend will run at http://localhost:5000.
+
+
+#### 3. Frontend Setup
+
+##### Step 1: Navigate to the Frontend Directory
+```bash
+cd ../frontend
+```
+
+##### Step 2: Install Dependencies
+```bash
+npm install
+```
+
+##### Step 3: Run the Frontend Development Server
+```bash
+npm run dev
+```
+
+
+#### 4. Run the Application
+ - Open the frontend URL: http://localhost:5173/
+ - Use the application to manage expenses!
+
+
+## Folder Structure
+```php
+DuitTrack/
+├── backend/                     # Backend files
+│   ├── config/
+│   │   └── db.js                # Database connection configuration
+│   ├── routes/                  # API routes
+|   |   └── authRoutes.js
+|   |   └── categoriesRoutes.js
+|   |   └── dashboardRoutes.js 
+│   │   └── expensesRoutes.js
+│   └── server.js                # Main server file
+├── frontend/                    # React frontend
+│   ├── src/                     # React source code
+│   │   ├── components/          # React components and pages
+│   │   └── App.jsx              # Main application entry point
+│   │   └── main.jsx             # React DOM entry point
+│   └── public/                  # Public assets
+│   └── package.json             # Dependencies and script definitions
+├── Website Screenshots/         # Screenshots of current website progress            
+└── README.md                    # Project documentation
+```
+
+## Acknowledgments
+ - **React Bootstrap** for the frontend design.
+ - **MySQL** for the database.
+ - **Express.js** for the backend framework.
