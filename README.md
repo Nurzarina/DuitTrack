@@ -32,7 +32,7 @@ Ensure you have the following installed:
 #### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/Nurzarina/Disaster_Response_App.git](https://github.com/Nurzarina/DuitTrack.git)
+git clone https://github.com/Nurzarina/DuitTrack.git
 cd DuitTrack
 ```
 
